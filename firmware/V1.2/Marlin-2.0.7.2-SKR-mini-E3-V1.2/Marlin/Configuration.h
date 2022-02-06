@@ -496,9 +496,9 @@
     #define DEFAULT_Ki_LIST {   1.54,   1.54 }
     #define DEFAULT_Kd_LIST {  76.55,  76.55 }
   #else
-    #define DEFAULT_Kp  21.73
-    #define DEFAULT_Ki   1.54
-    #define DEFAULT_Kd  76.55
+    #define DEFAULT_Kp  35.56
+    #define DEFAULT_Ki   4.03
+    #define DEFAULT_Kd  78.38
   #endif
 #endif // PIDTEMP
 
@@ -519,7 +519,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -535,9 +535,9 @@
   //#define MIN_BED_POWER 0
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
-  #define DEFAULT_bedKp 50.71
-  #define DEFAULT_bedKi 9.88
-  #define DEFAULT_bedKd 173.43
+  #define DEFAULT_bedKp 64.92
+  #define DEFAULT_bedKi 12.46
+  #define DEFAULT_bedKd 225.52
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -836,10 +836,10 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING
+#define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -856,7 +856,7 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
 
 /**
  * Probe Type
@@ -894,7 +894,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * Pressure sensor with a BLTouch-like interface
@@ -981,14 +981,14 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -40, -10, -1.85 }
+#define NOZZLE_TO_PROBE_OFFSET { -48, -10, -1.10}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (133*60)
+#define XY_PROBE_SPEED 5000
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1027,7 +1027,7 @@
 #define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
 
-#define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
+#define Z_PROBE_LOW_POINT          -4 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
 #define Z_PROBE_OFFSET_RANGE_MIN -20
@@ -1081,7 +1081,7 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true
+#define INVERT_X_DIR false
 #define INVERT_Y_DIR true
 #define INVERT_Z_DIR false
 
@@ -1229,7 +1229,7 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -1244,7 +1244,7 @@
  * Turn on with the command 'M111 S32'.
  * NOTE: Requires a lot of PROGMEM!
  */
-//#define DEBUG_LEVELING_FEATURE
+#define DEBUG_LEVELING_FEATURE
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_BILINEAR, AUTO_BED_LEVELING_UBL)
   // Gradually reduce leveling correction until a set height is reached,
@@ -1380,7 +1380,7 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing.
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
@@ -1498,13 +1498,13 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 185
-#define PREHEAT_1_TEMP_BED     45
+#define PREHEAT_1_TEMP_HOTEND 200
+#define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_LABEL       "Hot PLA"
+#define PREHEAT_2_TEMP_HOTEND 215
+#define PREHEAT_2_TEMP_BED    60
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
 /**
